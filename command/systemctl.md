@@ -28,25 +28,5 @@ systemctl restart nfs-server.service # 重新启动某服务
 systemctl list-units --type=service # 查看所有已启动的服务
 ```
 
-开启防火墙22端口
-
-```
-iptables -I INPUT -p tcp --dport 22 -j accept
-```
-
-如果仍然有问题，就可能是SELinux导致的
-
-关闭SElinux：
-
-修改`/etc/selinux/config`文件中的`SELINUX=""`为disabled，然后重启。
-
-彻底关闭防火墙：
-
-```bash
-sudo systemctl status firewalld.service
-sudo systemctl stop firewalld.service          
-sudo systemctl disable firewalld.service
-```
-
 
 <!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
